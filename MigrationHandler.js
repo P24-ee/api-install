@@ -12,9 +12,10 @@ const MigrationHandler = (repository) => {
         let response = [];
         let lastMigration = '';
         let foundLastMigration = true;
+        const migrationRepository = repository.get('migration');
 
         if(await repository.checkIfTableExists('migrations')) {
-            lastMigration = await repository.migration.getLastMigration();
+            lastMigration = await migrationRepository.getLastMigration();
             foundLastMigration = false;
         }
 
@@ -28,7 +29,7 @@ const MigrationHandler = (repository) => {
             }
 
             await db.query(migration);
-            await repository.migration.addRow(name);
+            await migrationRepository.addRow(name);
             response.push(name);
         }
 
