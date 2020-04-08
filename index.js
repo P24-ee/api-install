@@ -1,6 +1,6 @@
-import MigrationHandler from "./MigrationHandler";
-import SeedHandler from "./SeedHandler";
-import { Db, Repository } from 'p24-api-db';
+const MigrationHandler = require("./MigrationHandler");
+const SeedHandler = require("./SeedHandler");
+const { Db, Repository } = require("p24-api-db");
 
 const Installer = () => {
 
