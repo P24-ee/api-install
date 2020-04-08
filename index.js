@@ -11,6 +11,18 @@ const Installer = () => {
 
     const addMigration = migrationHandler.add;
     const addSeed = seedHandler.add;
+    const getRepository = () => {
+        return repository;
+    };
+    const getDb = () => {
+        return db;
+    };
+    const getMigrationHandler = () => {
+        return migrationHandler;
+    };
+    const getSeedHandler = () => {
+        return seedHandler;
+    };
 
     const install = async () => {
         let response = [];
@@ -39,6 +51,10 @@ const Installer = () => {
     };
 
     return {
+        getRepository,
+        getMigrationHandler,
+        getSeedHandler,
+        getDb,
         addMigration,
         addSeed,
         install,
