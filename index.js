@@ -6,11 +6,14 @@ const Installer = () => {
 
     const db = Db(true);
     const repository = Repository(db);
+    const migrationHandler = MigrationHandler(repository);
+    const seedHandler = SeedHandler(db);
+
+    const addMigration = migrationHandler.add;
+    const addSeed = seedHandler.add;
 
     const install = async () => {
         let response = [];
-        const migrationHandler = MigrationHandler(repository);
-        const seedHandler = SeedHandler(db);
 
         let migrationResponse = await migrationHandler.handle();
         if(typeof migrationResponse === 'object') {
@@ -36,7 +39,9 @@ const Installer = () => {
     };
 
     return {
-        install
+        addMigration,
+        addSeed,
+        install,
     }
 };
 
