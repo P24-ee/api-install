@@ -14,7 +14,7 @@ const Installer = () => {
 
     migrationHandler.add(
         '2020032715001_create_migrations',
-        __dirname + "/../migrations/2020032715001_create_migrations.sql"
+        __dirname + "/migrations/2020032715001_create_migrations.sql"
     );
 
     const addMigration = migrationHandler.add;
