@@ -1,6 +1,6 @@
 {
   "name": "p24-api-install",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/P24-ee/api-install#readme",
   "dependencies": {
-    "p24-api-db": "^1.0.2"
+    "p24-api-db": "^1.0.3"
   }
 }
