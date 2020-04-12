@@ -1,7 +1,6 @@
 const MigrationHandler = require("./MigrationHandler");
 const SeedHandler = require("./SeedHandler");
 const { Db, Repository } = require("p24-api-db");
-const MigrationRepository = require('./repositories/MigrationRepository');
 
 const Installer = () => {
 
@@ -9,8 +8,6 @@ const Installer = () => {
     const repository = Repository(db);
     const migrationHandler = MigrationHandler(repository);
     const seedHandler = SeedHandler(db);
-
-    repository.add('migration', MigrationRepository(db));
 
     migrationHandler.add(
         '2020032715001_create_migrations',

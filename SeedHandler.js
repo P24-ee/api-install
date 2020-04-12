@@ -1,4 +1,6 @@
 const fs = require('fs');
+const PropTypes = require('prop-types');
+const DbPropType = require('p24-api-db/prop_types/Db.propType');
 
 const SeedHandler = (db) => {
     let seeds = [];
@@ -28,5 +30,11 @@ const SeedHandler = (db) => {
         handle
     }
 };
+
+if (process.env.NODE_ENV !== 'production') {
+    SeedHandler.propTypes = {
+        db: PropTypes.shape(DbPropType),
+    };
+}
 
 module.exports = SeedHandler;

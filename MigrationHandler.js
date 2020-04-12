@@ -1,4 +1,7 @@
 const fs = require('fs');
+const PropTypes = require('prop-types');
+const MigrationRepository = require('./repositories/MigrationRepository');
+const RepositoryPropType = require('p24-api-db/prop_types/Repository.propType');
 
 const MigrationHandler = (repository) => {
     let migrations = [];
@@ -12,7 +15,7 @@ const MigrationHandler = (repository) => {
         let response = [];
         let lastMigration = '';
         let foundLastMigration = true;
-        const migrationRepository = repository.get('migration');
+        const migrationRepository = MigrationRepository(db);
 
         if(await repository.checkIfTableExists('migrations')) {
             lastMigration = await migrationRepository.getLastMigration();
@@ -45,5 +48,11 @@ const MigrationHandler = (repository) => {
         handle,
     }
 };
+
+if (process.env.NODE_ENV !== 'production') {
+    MigrationHandler.propTypes = {
+        repository: PropTypes.shape(RepositoryPropType),
+    };
+}
 
 module.exports = MigrationHandler;
