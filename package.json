@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/P24-ee/api-install#readme",
   "dependencies": {
-    "p24-api-db": "^1.0.7"
+    "p24-api-db": "file:../p24-api-db"
   }
 }
